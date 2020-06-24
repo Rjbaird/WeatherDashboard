@@ -1,10 +1,11 @@
-# WeatherDashboard
-
-**Description**
-With this application, you can search for the weaather using the OpenWeather API and recieve the following information:
+# Weather Dashboard
 
 # Website Link
 https://rjbaird.github.io/weatherdashboard/
+
+# Description
+
+With this application, you can search for the weaather using the OpenWeather API and recieve the following information:
 
 *Current Weaather Information*
 * Temperature
