@@ -3,6 +3,9 @@
 **Description**
 With this application, you can search for the weaather using the OpenWeather API and recieve the following information:
 
+# Website Link
+rjbaird.github.io/weatherdashboard/
+
 *Current Weaather Information*
 * Temperature
 * Humidity
@@ -15,3 +18,6 @@ With this application, you can search for the weaather using the OpenWeather API
 
 *A random based on weather results*
 * Each gif uses the description of the current weather in the OpenWeather API. The application then uses the Giphy API to find a gif based on the description.
+
+# Preview Image
+![](Example_Image.png)
