@@ -4,7 +4,7 @@
 With this application, you can search for the weaather using the OpenWeather API and recieve the following information:
 
 # Website Link
-rjbaird.github.io/weatherdashboard/
+https://rjbaird.github.io/weatherdashboard/
 
 *Current Weaather Information*
 * Temperature
