@@ -7,13 +7,13 @@ https://rjbaird.github.io/weatherdashboard/
 
 With this application, you can search for the weaather using the OpenWeather API and recieve the following information:
 
-*Current Weaather Information*
+*Current Weather Information*
 * Temperature
 * Humidity
 * Wind Speed
 * UV Index
 
-*A 5-Day forcast with temp*
+*A 5-Day forcast*
 * Temperature
 * Humidity
 
