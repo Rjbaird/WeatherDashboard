@@ -34,7 +34,7 @@ $(document).ready(function() {
           history.push(searchValue);
           // we set stringified search value in localStorage to the key history
           window.localStorage.setItem("history", JSON.stringify(history));
-          
+          // Console log data from openweather API call
           console.log(data)
           // run the makeRow function while passing it searchValue as a parameter
           makeRow(searchValue);
@@ -82,28 +82,27 @@ $(document).ready(function() {
           url: giphyURL,
           method: "GET"
         }).then(function(gifphyData) {
-          console.log(gifphyData);
           displayedGif = gifphyData.data.images.downsized_medium.url;
-          // Other options for gif image
-          // fixed_height_small_url
-          // images.downsized_medium.url
-          // image_original_url
-          
+          // create title for gif div
           var gifTitle = $("<h3>").addClass("card-title").text("Gifs for your Weather");
+          // create subtitle gif with search term
+          var gifSubTitle = $("<h4>").addClass("card-title").text("Search term: " + weatherGif);
           // create card div to hold gif content
           var gifCard = $("<div>").addClass("card");
           // create an image element with the gif as the source image
           var gifImage = $("<img>").attr("src", displayedGif);
           // append the title to the card
           gifCard.append(gifTitle);
+          // append the subtitle to the card
+          gifCard.append(gifSubTitle);
           // append the image tag to the card
           gifCard.append(gifImage);
           // append the weather gif card to the #today container
           $("#today").append(gifCard);
         });
-        
+        // Call the get Forecast function with data from the ajax call
         getForecast(searchValue);
-
+        // Call the get UVIndex function with data from the ajax call
         getUVIndex(data.coord.lat, data.coord.lon);
       }
     });
@@ -125,14 +124,17 @@ $(document).ready(function() {
           if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
             // create html elements for a bootstrap card
             var col = $("<div>").addClass("col-md-2");
+            // create div for the forcast card
             var card = $("<div>").addClass("card bg-primary text-white");
+            // create a div for the content in the forcast card
             var body = $("<div>").addClass("card-body p-2");
-
+            // add todays date as large text to the forcast card
             var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
-
+            // add weather icon to forcast card
             var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
-
+            // add max temp text to forcast card
             var p1 = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp_max + " °F");
+            // add humidity text to forcast card
             var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
 
             // merge together and put on page
@@ -156,6 +158,7 @@ $(document).ready(function() {
         var uv = $("<p>").text("UV Index: ");
         // variable to store a span tag with text content equal to the value of the data we pulled
         var btn = $("<span>").addClass("btn btn-sm").text(data.value);
+        // console log UV data
         console.log(data);
         // change color depending on uv value
         if (data.value < 3) {
@@ -167,7 +170,7 @@ $(document).ready(function() {
         else {
           btn.addClass("btn-danger");
         }
-        
+        // append the uv icon to the page
         $("#today .card-body").append(uv.append(btn));
       }
     });
@@ -181,11 +184,11 @@ $(document).ready(function() {
 
   // get current history, if any
   var history = JSON.parse(window.localStorage.getItem("history")) || [];
-
+  // If search history in local storage, get history
   if (history.length > 0) {
     searchWeather(history[history.length-1]);
   }
-
+  // display search history to the user
   for (var i = 0; i < history.length; i++) {
     makeRow(history[i]);
   }
